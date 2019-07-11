@@ -1,0 +1,37 @@
+{
+  "name": "sqlite-js-wrapper",
+  "version": "1.0.0",
+  "description": "Tiny SQLite helper library built on top of HTML5/Web SQL (DRAFT) API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.1",
+    "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skuzoluk/sqlite-js-wrapper.git"
+  },
+  "keywords": [
+    "sqlite",
+    "js",
+    "wrapper"
+  ],
+  "author": "Seçkin KUZOLUK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skuzoluk/sqlite-js-wrapper/issues"
+  },
+  "homepage": "https://github.com/skuzoluk/sqlite-js-wrapper#readme"
+}
