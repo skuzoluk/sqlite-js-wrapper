@@ -24,7 +24,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skuzoluk/sqlite-js-wrapper.git"
+    "url": "git+https://github.com/skuzoluk/sqlite-js-wrapper.git",
+    "homepage": "https://github.com/skuzoluk/sqlite-js-wrapper#readme"
   },
   "keywords": [
     "sqlite",
