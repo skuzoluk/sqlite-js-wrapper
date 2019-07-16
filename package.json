@@ -1,6 +1,6 @@
 {
   "name": "sqlite-js-wrapper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tiny SQLite helper library built on top of HTML5/Web SQL (DRAFT) API",
   "main": "index.js",
   "scripts": {
