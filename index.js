@@ -323,20 +323,29 @@ const SQLiteJSWrapper = function(db) {
     return obj;
   };
 
-  this.createTable = (tableName, columns) => {
-    let query = '';
-    for (let i = 0; i < columns.length; i++) {
-      if (i === columns.length - 1) {
-        query += `"${columns[i].name}" ${columns[i].dataType} ${columns[i].isNotNull ? 'NOT NULL ' : ''}${
-          columns[i].options
-          }`;
-      } else {
-        query += `"${columns[i].name}" ${columns[i].dataType} ${columns[i].isNotNull ? 'NOT NULL ' : ''}${
-          columns[i].options
-          },`;
-      }
+  this.createTable = (tableName, columns, withRowId = false) => {
+    const primaryKeys = columns.filter(x => x.primaryKey).map(x => x.columnName);
+    let colStr = columns
+      .map(col => {
+        const quote = typeof col.default === 'string' ? "'" : '';
+        return [
+          col.columnName,
+          col.dataType || '',
+          col.primaryKey && primaryKeys.length === 1 ? 'PRIMARY KEY' : '',
+          col.autoIncrement && col.primaryKey && primaryKeys.length === 1 ? 'AUTOINCREMENT' : null,
+          col.notNull ? 'NOT NULL' : null,
+          col.unique ? 'UNIQUE' : null,
+          col.default ? `DEFAULT ${quote}${col.default}${quote}` : null,
+          col.option || null,
+        ]
+          .filter(x => x !== null)
+          .join(' ');
+      })
+      .join(', ');
+    if (primaryKeys && primaryKeys.length > 1) {
+      colStr += `, PRIMARY KEY (${primaryKeys.join(', ')})`;
     }
-    this.query(`CREATE TABLE IF NOT EXISTS ${tableName} (${query})`);
+    return this.query(`CREATE TABLE IF NOT EXISTS ${tableName} (${colStr}) ${withRowId ? '[WITHOUT ROWID]' : ''}`);
   };
 };
 
