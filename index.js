@@ -323,7 +323,7 @@ const SQLiteJSWrapper = function(db) {
     return obj;
   };
 
-  this.createTable = (tableName, columns, withRowId = false) => {
+  this.createTable = async (tableName, columns, withRowId = false) => {
     const primaryKeys = columns.filter(x => x.primaryKey).map(x => x.columnName);
     let colStr = columns
       .map(col => {
@@ -342,14 +342,28 @@ const SQLiteJSWrapper = function(db) {
           .join(' ');
       })
       .join(', ');
+
     if (primaryKeys && primaryKeys.length > 1) {
       colStr += `, PRIMARY KEY (${primaryKeys.join(', ')})`;
     }
-    return this.query(`CREATE TABLE IF NOT EXISTS ${tableName} (${colStr}) ${withRowId ? '[WITHOUT ROWID]' : ''}`);
+
+    return new Promise((resolve, reject) => {
+      this.query(`CREATE TABLE IF NOT EXISTS ${tableName} (${colStr}) ${withRowId ? '[WITHOUT ROWID]' : ''}`)
+        .then(() => resolve(true))
+        .catch(err => {
+          reject(err);
+        });
+    });
   };
 
   this.dropTable = tableName => {
-    return this.query(`DROP TABLE IF EXISTS ${tableName}`);
+    return new Promise((resolve, reject) => {
+      this.query(`DROP TABLE IF EXISTS ${tableName}`)
+        .then(() => resolve(true))
+        .catch(err => {
+          reject(err);
+        });
+    });
   };
 };
 
