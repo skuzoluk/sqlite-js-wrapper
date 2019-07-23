@@ -1,7 +1,7 @@
 {
   "name": "sqlite-js-wrapper",
-  "version": "1.0.2",
-  "description": "Tiny SQLite helper library built on top of HTML5/Web SQL (DRAFT) API",
+  "version": "1.1.0",
+  "description": "Tiny SQLite helper library (query builder) built on top of HTML5/Web SQL (DRAFT) API",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -36,7 +36,9 @@
     "javascript",
     "storage",
     "react",
-    "native"
+    "native",
+    "database",
+    "cordova"
   ],
   "author": "Seçkin KUZOLUK",
   "license": "MIT",
