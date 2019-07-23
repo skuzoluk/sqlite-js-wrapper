@@ -30,7 +30,13 @@
   "keywords": [
     "sqlite",
     "js",
-    "wrapper"
+    "wrapper",
+    "helper",
+    "sqlite3",
+    "javascript",
+    "storage",
+    "react",
+    "native"
   ],
   "author": "Seçkin KUZOLUK",
   "license": "MIT",
