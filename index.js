@@ -347,6 +347,10 @@ const SQLiteJSWrapper = function(db) {
     }
     return this.query(`CREATE TABLE IF NOT EXISTS ${tableName} (${colStr}) ${withRowId ? '[WITHOUT ROWID]' : ''}`);
   };
+
+  this.dropTable = tableName => {
+    return this.query(`DROP TABLE IF EXISTS ${tableName}`);
+  };
 };
 
 export default SQLiteJSWrapper;
