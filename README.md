@@ -37,6 +37,7 @@ Here is the feature list
 | insert        | Insert single object or array of objects to the table given
 | createTable   | Creates table using column argument and returns true or throws error
 | dropTable     | Drops table if exists given as first argument and returns true or throws error
+| isTableExists | Check if a table exists or not
 | table         | The magic! Takes table name as an argument then let you to chain with other functions such as (select, delete, update, where, whereIn, whereRaw, whereBetween, distinct, join, orderBy, groupBy, having)
 
 Chaining functions

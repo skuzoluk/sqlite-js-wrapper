@@ -365,6 +365,16 @@ const SQLiteJSWrapper = function(db) {
         });
     });
   };
+
+  this.isTableExists = tableName => {
+    return new Promise((resolve, reject) => {
+      this.query(`SELECT name FROM sqlite_master WHERE type='table' AND name='${tableName}'`)
+        .then(result => resolve(result.length > 0))
+        .catch(err => {
+          reject(err);
+        });
+    });
+  };
 };
 
 export default SQLiteJSWrapper;
