@@ -296,6 +296,22 @@ const SQLiteJSWrapper = function(db) {
       });
     }
 
+    this.exists = function() {
+      const tableName = this.alias ? `${this.table} AS ${this.alias}` : table;
+      const whereData = getWhereData(this.whereList);
+
+      const whereStr = this.whereList.length > 0 ? ` WHERE${whereData.whereStr}` : '';
+      const query = `SELECT DISTINCT 1 FROM ${tableName}${whereStr}`;
+
+      return new Promise(async (resolve, reject) => {
+        this.query(query, whereData.param)
+          .then(result => {
+            resolve(result.length > 0);
+          })
+          .catch(reject);
+      });
+    };
+
     const obj = {
       table,
       alias,
@@ -318,6 +334,7 @@ const SQLiteJSWrapper = function(db) {
     obj.having = having;
     obj.join = join;
     obj.delete = this.delete;
+    obj.exists = this.exists;
     obj.update = update;
     obj.query = this.query;
     return obj;

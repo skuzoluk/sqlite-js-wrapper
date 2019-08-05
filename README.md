@@ -56,6 +56,7 @@ Chaining functions
 | orderBy       | Adds order by clause to the query. It can be used multiple times <p>Arguments: field (string), type (string default is 'ASC' values are ASC, DESC)
 | groupBy       | Groups the query using the array given. <p>Arguments: groupByArray (array of string)
 | having        | Adds raw having clause to a grouped query. <p>Arguments: havingStr (string)
+| exists        | Check if records exists or not 
 
 ## createTable->columns supported properties
 | key           | value      |  required   
