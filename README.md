@@ -6,7 +6,7 @@ This library helps you to build sqlite query in an eloquent way.
 ## Supported platforms
 | Browser       | Mobile       | NodeJS  
 | ------------- |:-------------|:-------:
-| Any js library supports ES6 module (React, VueJS...)| React Native, Cordova (JS based others) | Try and inform me please :)
+| Any js library supports ES6 module (React, VueJS...)| React Native, Cordova (JS based others) | You can bridge using <a href="https://github.com/nolanlawson/node-websql">node-websql</a> library
 
 ## Why i need this tiny library
 <p>I need to use sqlite in a project and i did some research. I found some libraries, for example websqlite and TypeORM.
